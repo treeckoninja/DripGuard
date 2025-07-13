@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DripGuard: Don't Get Dripped by AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-primary-bg-soft text-dark-text font-inter">
+    <header class="bg-white shadow-header fixed w-full top-0 z-10">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="logo">
+                <img src="images_dripguard_logo.png" alt="DripGuard Logo" class="header-logo">
+            </div>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section bg-hero-gradient text-white text-center py-32 flex items-center justify-center min-h-screen pt-32">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Don't Get Dripped by AI, Stay Informed.</h1>
+            <p class="text-xl md:text-2xl mb-10 opacity-90 leading-relaxed">DripGuard empowers you to confidently navigate the digital world by identifying AI-generated content in real-time. Protect yourself from confusion and deception.</p>
+            <a href="#pricing" class="btn primary-btn">Get DripGuard Now</a>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section-spacing bg-white">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="section-title text-center mb-4">How DripGuard Works</h2>
+            <p class="section-subtitle text-center mb-12 max-w-3xl mx-auto">DripGuard integrates seamlessly into your browsing, providing intuitive insights when you need them most. Watch our simulated extension icon in the top-right corner to see it in action!</p>
+
+            <div class="workflow-steps grid md:grid-cols-3 gap-10 mt-10">
+                <div class="step-item bg-primary-bg-soft p-8 rounded-lg shadow-md border border-light-border">
+                    <img src="https://placehold.co/80x80/E0F2F7/2C3E50?text=1" alt="Step 1: Browse Icon" class="mx-auto mb-6 rounded-full border-2 border-accent-blue-light">
+                    <h3>1. Browse Naturally</h3>
+                    <p class="text-dark-text">Install the DripGuard browser extension and continue browsing the web as usual. We work silently in the background.</p>
+                </div>
+                <div class="step-item bg-primary-bg-soft p-8 rounded-lg shadow-md border border-light-border">
+                    <img src="https://placehold.co/80x80/B0D0E0/2C3E50?text=2" alt="Step 2: Alert Icon" class="mx-auto mb-6 rounded-full border-2 border-accent-blue-light">
+                    <h3>2. Get Instantly Alerted</h3>
+                    <p class="text-dark-text">Our subtle icon in your browser bar changes color to indicate "Low," "Moderate," or "High" Drip Risk on any page.</p>
+                </div>
+                <div class="step-item bg-primary-bg-soft p-8 rounded-lg shadow-md border border-light-border">
+                    <img src="https://placehold.co/80x80/80B0D0/2C3E50?text=3" alt="Step 3: Insight Icon" class="mx-auto mb-6 rounded-full border-2 border-accent-blue-light">
+                    <h3>3. Dive into Insights</h3>
+                    <p class="text-dark-text">Click the icon to open a detailed panel with "Drip Scores," highlighted suspect content, and supporting research links.</p>
+                </div>
+            </div>
+
+            <div class="demo-area bg-primary-bg-soft p-12 rounded-lg shadow-lg mt-20 border border-light-border">
+                <h3 class="text-3xl font-semibold mb-4 text-dark-text">Simulated AI Content for Demo</h3>
+                <p class="text-lg mb-8 text-muted-text">This is a sample text that DripGuard will analyze. Observe the icon in the top-right corner, and then click it when it changes state!</p>
+                <div class="sample-text-container bg-white p-8 rounded-md shadow-inner-sm border border-light-border">
+                    <p id="sample-ai-text" class="sample-text text-dark-text leading-relaxed">
+                        The current advancements in artificial intelligence models are truly remarkable. These sophisticated algorithms are capable of generating coherent and contextually relevant text with unprecedented fluency. However, it is imperative to acknowledge that the output, while impressive, may sometimes lack the nuanced depth or unique perspective characteristic of human creativity. Furthermore, the iterative process of training these models on vast datasets often leads to a certain degree of predictability in linguistic patterns. Consequently, discerning between human-authored content and machine-generated content presents an ongoing challenge for digital consumers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section-spacing bg-secondary-bg-soft">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="section-title text-center mb-12 text-dark-text">Key Features of DripGuard</h2>
+            <div class="feature-grid grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10">
+                <div class="feature-item bg-white p-8 rounded-lg shadow-md border border-light-border">
+                    <h3>Real-time Detection</h3>
+                    <p class="text-dark-text">Instantaneously identifies AI-generated text as you browse, using both advanced AI and heuristic "drip" patterns.</p>
+                </div>
+                <div class="feature-item bg-white p-8 rounded-lg shadow-md border border-light-border">
+                    <h3>Clear Insights</h3>
+                    <p class="text-dark-text">Get a "Drip Score," highlighted suspect sections, and an explanation of why content is flagged.</p>
+                </div>
+                <div class="feature-item bg-white p-8 rounded-lg shadow-md border border-light-border">
+                    <h3>Fact-Backed Trust</h3>
+                    <p class="text-dark-text">Access direct links to peer-reviewed research supporting our detection methods, ensuring transparency.</p>
+                </div>
+                 <div class="feature-item bg-white p-8 rounded-lg shadow-md border border-light-border">
+                    <h3>Privacy-Focused Design</h3>
+                    <p class="text-dark-text">Your browsing data stays private. Analysis is performed locally or with anonymized data, never collected for personal profiling.</p>
+                </div>
+                <div class="feature-item bg-white p-8 rounded-lg shadow-md border border-light-border">
+                    <h3>Continuous Updates</h3>
+                    <p class="text-dark-text">Our detection algorithms are constantly updated to keep pace with the rapidly evolving landscape of AI-generated content.</p>
+                </div>
+                <div class="feature-item bg-white p-8 rounded-lg shadow-md border border-light-border">
+                    <h3>User Feedback & Refinement</h3>
+                    <p class="text-dark-text">Contribute to DripGuard's accuracy by providing feedback, helping us refine detection and improve the user experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section-spacing bg-primary-bg-soft">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h2 class="section-title text-center mb-12">Simple Pricing, Powerful Protection</h2>
+            <div class="pricing-card bg-white p-12 rounded-lg shadow-lg border border-accent-blue max-w-md mx-auto text-left">
+                <h3 class="text-3xl font-semibold mb-4 text-accent-blue">Basic Tier</h3>
+                <p class="text-5xl font-bold mb-2 text-accent-blue">$14.99 <span class="text-xl text-dark-text">/ month</span></p>
+                <p class="text-xl font-semibold mb-6 text-accent-green">Get 25% off your first month!</p>
+                <ul class="list-none p-0 mb-8 text-dark-text">
+                    <li class="mb-3 flex items-center"><span class="text-accent-blue text-2xl mr-2">✓</span> Real-time AI detection</li>
+                    <li class="mb-3 flex items-center"><span class="text-accent-blue text-2xl mr-2">✓</span> "Drip Score" & Insights</li>
+                    <li class="mb-3 flex items-center"><span class="text-accent-blue text-2xl mr-2">✓</span> Highlighting suspect content</li>
+                    <li class="mb-3 flex items-center"><span class="text-accent-blue text-2xl mr-2">✓</span> Access to research links</li>
+                    <li class="mb-3 flex items-center"><span class="text-accent-blue text-2xl mr-2">✓</span> Continuous updates</li>
+                </ul>
+                <form id="signup-form" class="signup-form flex flex-col gap-4">
+                    <input type="email" id="email-signup" placeholder="Enter your email" required class="w-full p-3 rounded-md bg-primary-bg-soft border border-light-border text-dark-text focus:ring-2 focus:ring-accent-blue focus:border-transparent">
+                    <button type="submit" class="btn primary-btn">Sign Up Now</button>
+                    <p id="signup-message" class="message text-center font-semibold text-sm mt-2"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer id="about" class="bg-primary-dark text-white py-12 text-center">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="mission-statement max-w-3xl mx-auto mb-8">
+                <h3 class="text-3xl font-semibold mb-4 text-white">Our Mission</h3>
+                <p class="text-lg leading-relaxed text-light-text-on-dark">At DripGuard, our mission is to empower individuals to navigate the digital world with confidence and clarity. In an age of rapidly evolving AI, we are committed to providing ethical, fact-based tools that foster information literacy, combat misinformation, and protect against deception, ensuring a more informed and trustworthy digital future for everyone.</p>
+            </div>
+            <p class="text-sm text-muted-text">&copy; 2025 DripGuard. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Simulated DripGuard Extension Icon (fixed to top-right) -->
+    <div id="simulated-browser-icon" class="simulated-browser-icon default-state" title="DripGuard Status">
+        <img src="images_dripguard_logo.png" alt="DripGuard Icon">
+    </div>
+
+    <!-- Simulated DripGuard Extension Popup -->
+    <div id="simulated-popup" class="simulated-extension-popup hidden">
+        <div class="popup-header bg-primary-bg-soft border-b border-light-border">
+            <img src="images/dripguard_logo.png" alt="DripGuard Logo" class="popup-logo">
+            <h3 class="text-xl font-semibold text-dark-text">DripGuard Analysis</h3>
+            <button class="close-popup-btn text-dark-text hover:text-accent-red transition-colors duration-200">&times;</button>
+        </div>
+        <div class="popup-content p-4 bg-white">
+            <div class="drip-score-display text-center bg-primary-bg-soft p-3 rounded-md border border-light-border">
+                <p class="text-sm text-dark-text mb-1">Overall Drip Score:</p>
+                <h4 id="drip-score" class="text-4xl font-bold text-accent-blue">--%</h4>
+                <p id="drip-risk-level" class="risk-level text-lg font-semibold mt-1"></p>
+            </div>
+            <div class="heuristic-flags">
+                <h5 class="text-lg font-semibold mb-2 text-dark-text">Detected Heuristic Flags:</h5>
+                <ul id="flags-list" class="list-none p-0">
+                    <!-- Flags will be populated by JS -->
+                </ul>
+            </div>
+            <div class="detection-logic">
+                <h5 class="text-lg font-semibold mb-2 text-dark-text">Detection Logic:</h5>
+                <p class="text-sm text-muted-text">Our simulated analysis identified patterns commonly associated with AI-generated text, such as high predictability in word choice and consistent sentence structures. These "drips" suggest a higher likelihood of machine authorship.</p>
+                <p class="text-sm mt-2"><a href="https://scholar.google.com/scholar?q=AI+generated+text+detection+methods" target="_blank" class="text-accent-blue hover:underline">Learn more about AI detection research on Google Scholar.</a></p>
+            </div>
+            <div class="user-feedback flex flex-col items-center gap-3 mt-4">
+                <h5 class="text-lg font-semibold mb-2 text-dark-text">Was this analysis helpful?</h5>
+                <div class="flex space-x-4">
+                    <button class="btn feedback-btn bg-primary-bg-soft text-accent-blue border border-accent-blue hover:bg-accent-blue hover:text-white transition-colors duration-200">👍 Yes</button>
+                    <button class="btn feedback-btn bg-primary-bg-soft text-accent-red border border-accent-red hover:bg-accent-red hover:text-white transition-colors duration-200">👎 No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popup-backdrop" class="popup-backdrop hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
