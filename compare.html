@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DripGuard — Compare Styles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0F2A3F;--ink-soft:#587382;--paper:#EAF1F4;--paper-2:#E0EAEE;--surface:#FFFFFF;--water:#11A6B0;--water-deep:#0C7B83;--amber:#E0922F;--coral:#E2553B;--good:#2BA86B;--line:#CFDEE4;--line-soft:#DEE9ED;--shadow-sm:0 1px 3px rgba(15,42,63,.08);--shadow-md:0 6px 18px rgba(15,42,63,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+a{color:var(--water-deep)}
+header{position:sticky;top:0;z-index:50;background:rgba(234,241,244,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.brand b{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.15rem}
+.brand .mark{width:26px;height:26px}
+nav a{font-size:.9rem;color:var(--ink-soft);text-decoration:none;margin-left:20px;font-weight:500}
+nav a:hover{color:var(--water-deep)}
+nav a.active{color:var(--ink);font-weight:600}
+.hero{padding:40px 0 8px}
+.eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--water-deep);margin:0 0 12px}
+h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px}
+.lede{font-size:1.05rem;color:var(--ink-soft);max-width:60ch;margin:0 0 8px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-md);padding:20px;margin-top:22px}
+.panel h3{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin:0 0 4px}
+.panel .sub{font-size:.85rem;color:var(--ink-soft);margin:0 0 14px}
+.btn{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;border:none;border-radius:10px;padding:11px 20px;cursor:pointer;background:var(--water);color:#fff;box-shadow:var(--shadow-sm);transition:background .2s,transform .15s}
+.btn:hover{background:var(--water-deep);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink-soft);box-shadow:none;padding:11px 8px}
+.btn-ghost:hover{color:var(--water-deep);background:transparent}
+textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:12px;font-family:'Inter',sans-serif;font-size:.96rem;line-height:1.6;color:var(--ink);background:#FBFDFE;outline:none;resize:vertical}
+textarea:focus{border-color:var(--water);box-shadow:0 0 0 3px rgba(17,166,176,.16)}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+@media(max-width:760px){.metrics{grid-template-columns:repeat(3,1fr)}}
+.metric{background:var(--paper);border:1px solid var(--line-soft);border-radius:10px;padding:12px;text-align:center}
+.metric .v{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem}
+.metric .l{font-family:'Space Mono',monospace;font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:760px){.row2{grid-template-columns:1fr}}
+.cmatrix{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px;font-size:.82rem;align-items:center}
+.cmatrix .cell{border-radius:8px;padding:14px;text-align:center;font-family:'Space Mono',monospace}
+.cmatrix .hd{font-family:'Space Mono',monospace;font-size:.66rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;text-align:center}
+.cmatrix .big{font-size:1.4rem;font-weight:700;display:block}
+.cell.tp{background:rgba(43,168,107,.14)}.cell.tn{background:rgba(43,168,107,.14)}
+.cell.fp{background:rgba(226,85,59,.14)}.cell.fn{background:rgba(226,85,59,.14)}
+.slider{display:flex;align-items:center;gap:14px;margin:4px 0 0}
+.slider input{flex:1;accent-color:var(--water)}
+.slider .tag{font-family:'Space Mono',monospace;font-size:.85rem;color:var(--ink);min-width:120px}
+svg.chart{width:100%;height:auto;display:block}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line-soft)}
+th{font-family:'Space Mono',monospace;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft)}
+td.snip{color:var(--ink-soft);max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{font-family:'Space Mono',monospace;font-size:.7rem;padding:2px 8px;border-radius:999px}
+.pill.ai{background:rgba(226,85,59,.14);color:var(--coral)}
+.pill.hu{background:rgba(43,168,107,.14);color:var(--good)}
+.ok{color:var(--good);font-weight:700}.no{color:var(--coral);font-weight:700}
+.note{background:#FFF7EC;border:1px solid #F2D7A8;border-radius:10px;padding:12px 14px;font-size:.86rem;color:#8A5A12;margin-top:16px}
+.tablewrap{max-height:300px;overflow:auto;border:1px solid var(--line-soft);border-radius:10px;margin-top:8px}
+.scrollx{overflow-x:auto}
+footer{background:var(--ink);color:#8FA8B5;padding:30px 0;margin-top:40px;font-size:.85rem}
+:focus-visible{outline:3px solid var(--water);outline-offset:2px;border-radius:6px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32"><path d="M16 2C16 2 5 15 5 22a11 11 0 0 0 22 0C27 15 16 2 16 2Z" fill="#11A6B0"/></svg><b>DripGuard</b></a>
+  <nav><a href="index.html">Analyzer</a><a href="compare.html" class="active">Compare</a><a href="eval.html">Evaluate</a></nav>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Does this sound like them?</p>
+    <h1>Compare against a known sample</h1>
+    <p class="lede">Judging text in a vacuum is where false accusations come from. Paste writing you know is a person's own, then the text in question. DripGuard measures how closely their <em>styles</em> match — sentence rhythm, word habits, punctuation fingerprints — which is far more defensible than a lone AI score.</p>
+  </section>
+
+  <div class="panel">
+    <div class="row2">
+      <div>
+        <h3>Known writing</h3>
+        <p class="sub">A sample you're confident the person wrote themselves.</p>
+        <textarea id="ref" rows="9"></textarea>
+      </div>
+      <div>
+        <h3>Text in question</h3>
+        <p class="sub">The piece you're checking.</p>
+        <textarea id="sus" rows="9"></textarea>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap">
+      <button class="btn" id="run">Compare styles</button>
+      <button class="btn btn-ghost" id="sample">Load example</button>
+    </div>
+  </div>
+
+  <div id="results" style="display:none">
+    <div class="panel" style="text-align:center">
+      <h3 style="justify-content:center">Style match</h3>
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:3.4rem;line-height:1" id="matchNum">—</div>
+      <span class="pill" id="matchBand" style="font-size:.85rem;margin-top:6px;display:inline-block"></span>
+      <p class="sub" id="matchExplain" style="max-width:60ch;margin:14px auto 0"></p>
+      <div class="note" id="shortNote" style="display:none"></div>
+    </div>
+
+    <div class="row2">
+      <div class="panel" style="margin-top:0">
+        <h3>Word-habit fingerprint</h3>
+        <p class="sub">How similarly the two texts use small function words (the, of, and, to…). This is the backbone of real authorship analysis — these habits are hard to fake and slow to change.</p>
+        <div style="font-family:'Space Grotesk';font-weight:700;font-size:2rem" id="fwCos">—</div>
+        <div style="font-family:'Space Mono',monospace;font-size:.72rem;color:var(--ink-soft)">function-word cosine similarity</div>
+      </div>
+      <div class="panel" style="margin-top:0">
+        <h3>Drip Score, for context</h3>
+        <p class="sub">Each text's standalone AI-likeness. A big gap between the two is itself worth a second look.</p>
+        <div style="display:flex;gap:24px;margin-top:8px">
+          <div><div style="font-family:'Space Grotesk';font-weight:700;font-size:2rem" id="dripRef">—</div><div style="font-family:'Space Mono',monospace;font-size:.72rem;color:var(--ink-soft)">known writing</div></div>
+          <div><div style="font-family:'Space Grotesk';font-weight:700;font-size:2rem" id="dripSus">—</div><div style="font-family:'Space Mono',monospace;font-size:.72rem;color:var(--ink-soft)">text in question</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Feature-by-feature</h3>
+      <p class="sub">Each stylistic trait side by side. Full bars mean the two texts behave alike on that trait.</p>
+      <div class="scrollx"><table>
+        <thead><tr><th>Trait</th><th>Known</th><th>In question</th><th style="width:34%">Closeness</th></tr></thead>
+        <tbody id="featBody"></tbody>
+      </table></div>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">DripGuard style comparison · runs entirely in your browser · style similarity is evidence, not proof — short texts are noisy, and people can write in more than one voice.</div></footer>
+<script>
+
+/* ===================================================================
+   DripGuard v2 — two-sided heuristics + visual breakdown (client-side)
+   =================================================================== */
+const WORD_RE=/[A-Za-z0-9'\u2019-]+/g;
+
+const SAMPLE_AI=`The current advancements in artificial intelligence models are truly remarkable. These sophisticated algorithms are capable of generating coherent and contextually relevant text with unprecedented fluency. However, it is imperative to acknowledge that the output, while impressive, may sometimes lack the nuanced depth characteristic of human creativity. Furthermore, the iterative process of training these models on vast datasets often leads to a certain degree of predictability in linguistic patterns. Moreover, it's important to note that these systems navigate the complexities of language in ways that are not just impressive but transformative. Consequently, discerning between human-authored content and machine-generated content presents an ongoing challenge for educators, researchers, and everyday readers.`;
+const SAMPLE_HUMAN=`I almost missed the turn. Rain had been coming down for hours, and by the time I found the diner its windows were the only warm thing for miles. A waitress named Dot poured my coffee like she had somewhere better to be. I didn't. We talked about nothing much — her son was stationed in Texas, the pie was stale, the jukebox only knew sad songs. I stayed anyway, watching trucks hiss past on the wet road. For a while that was enough, and then it wasn't, and I left a big tip and drove home.`;
+
+/* AI-leaning signals: label, default weight, description (weights are adjustable) */
+const AI_SIGNALS={
+  vocab:     {label:'AI-favored wording',     w:0.26, desc:'Words and phrases models reach for far more than people do (delve, tapestry, "it\u2019s important to note").'},
+  uniformity:{label:'Uniform sentence length',w:0.18, desc:'AI tends toward an even, mid-length rhythm. Low variation in sentence length pushes the score up.'},
+  emdash:    {label:'Em-dash density',        w:0.11, desc:'The em-dash is a signature AI punctuation habit, measured per 100 words.'},
+  trans:     {label:'Transition openers',      w:0.11, desc:'Sentences starting with However, Moreover, Furthermore, Consequently and friends.'},
+  rule3:     {label:'Rule-of-three lists',     w:0.09, desc:'The tidy "X, Y, and Z" triple is an AI favorite.'},
+  anti:      {label:'"Not just X, but Y"',     w:0.09, desc:'The antithesis construction ("not only\u2026 but also") models love for false emphasis.'},
+  smartq:    {label:'Smart quotes',            w:0.10, desc:'Curly quotation marks and apostrophes are produced by AI more than by people typing.'},
+  tilde:     {label:'Tilde tic',               w:0.06, desc:'The tilde rarely appears in formal human prose but shows up as a chatty AI flourish.'},
+};
+const DEFAULT_W={}; for(const k in AI_SIGNALS) DEFAULT_W[k]=AI_SIGNALS[k].w;
+
+const HUMAN_SIGNALS={
+  variation:   {label:'Varied sentence rhythm', w:0.40},
+  contractions:{label:'Contractions',           w:0.25},
+  firstperson: {label:'First-person voice',     w:0.20},
+  specificity: {label:'Concrete specifics',     w:0.15},
+};
+
+const VOCAB=["delve","delve into","tapestry","rich tapestry","realm","in the realm of","navigate the complexities","navigating the","testament","a testament to","underscore","underscores","boasts","ever-evolving","ever-changing","in today's","fast-paced world","crucial role","vital role","pivotal role","significant role","it's important to note","it is important to note","it's worth noting","imperative to","when it comes to","a myriad of","myriad","leverage","leveraging","robust","seamless","seamlessly","foster","fostering","landscape","comprehensive","nuanced","multifaceted","embark","elevate","unlock","harness","harnessing","paramount","intricate","meticulous","meticulously","treasure trove","dive into","at the end of the day","needless to say","first and foremost","in conclusion","ultimately","notably","arguably","moreover","furthermore","additionally","consequently","unprecedented","cutting-edge","transformative","holistic","streamline","truly remarkable","coherent and contextually","predictability in linguistic"];
+const TRANSITIONS=["However","Moreover","Furthermore","Additionally","Consequently","Therefore","Thus","Hence","Ultimately","Notably","Importantly","Nevertheless","Nonetheless","Indeed","Subsequently"];
+const ANTI_RES=[/\bnot just\b[^.?!]{1,70}?\bbut\b/gi,/\bnot only\b[^.?!]{1,70}?\bbut\b/gi,/\bisn['\u2019]t\b[^.?!]{1,70}?\bit['\u2019]s\b/gi];
+
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function escapeRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+const APOS="['\u2019\u2018]";
+function clamp(x,lo,hi){return Math.max(lo,Math.min(hi,x));}
+function countRe(text,re){const m=text.match(re);return m?m.length:0;}
+
+function getSentences(text){
+  const out=[]; const re=/[^.!?]+[.!?]+/g; let m;
+  while((m=re.exec(text))){
+    const t=m[0].trim();
+    const words=(t.match(WORD_RE)||[]).length;
+    out.push({text:t,start:m.index,end:m.index+m[0].length,words});
+  }
+  return out;
+}
+
+function collectMatches(text){
+  const found=[];
+  VOCAB.forEach(p=>{const re=new RegExp('\\b'+escapeRe(p).replace(/'/g,APOS)+'\\b','gi');let m;while((m=re.exec(text)))found.push({start:m.index,end:m.index+m[0].length,cls:'vocab',reason:'AI-favored wording'});});
+  {let m;const re=/\u2014|--/g;while((m=re.exec(text)))found.push({start:m.index,end:m.index+m[0].length,cls:'dash',reason:'Em-dash \u2014 favored by AI'});}
+  {let m;const re=/~/g;while((m=re.exec(text)))found.push({start:m.index,end:m.index+1,cls:'tilde',reason:'Tilde \u2014 an informal AI tic'});}
+  ANTI_RES.forEach(re=>{re.lastIndex=0;let m;while((m=re.exec(text)))found.push({start:m.index,end:m.index+m[0].length,cls:'anti',reason:'"Not just X, but Y" construction'});});
+  {const re=new RegExp('([.!?]\\s+|^)('+TRANSITIONS.join('|')+')\\b','g');let m;while((m=re.exec(text))){const g=m[2];const gi=m.index+m[1].length;found.push({start:gi,end:gi+g.length,cls:'trans',reason:'Formulaic transition opener'});}}
+  found.sort((a,b)=>a.start-b.start||(b.end-b.start)-(a.end-a.start));
+  const keep=[];let last=-1;
+  for(const f of found){if(f.start>=last){keep.push(f);last=f.end;}}
+  return keep;
+}
+
+function highlight(text,spans){
+  let out='',i=0;
+  for(const s of spans){
+    if(s.start>i)out+=escapeHtml(text.slice(i,s.start));
+    out+='<mark class="'+s.cls+'" title="'+escapeHtml(s.reason)+'">'+escapeHtml(text.slice(s.start,s.end))+'</mark>';
+    i=s.end;
+  }
+  out+=escapeHtml(text.slice(i));
+  return out;
+}
+
+function analyze(text,weights){
+  const W=weights||DEFAULT_W;
+  const words=text.match(WORD_RE)||[]; const wordCount=words.length;
+  const per100=n=>wordCount?n/wordCount*100:0;
+  const sents=getSentences(text);
+  const lens=sents.map(s=>s.words).filter(n=>n>0);
+
+  let vocabCount=0;
+  VOCAB.forEach(p=>{const re=new RegExp('\\b'+escapeRe(p).replace(/'/g,APOS)+'\\b','gi');vocabCount+=countRe(text,re);});
+  const emdash=countRe(text,/\u2014|--/g);
+  const tilde=countRe(text,/~/g);
+  let anti=0; ANTI_RES.forEach(re=>{anti+=countRe(text,re);});
+  const trans=countRe(text,new RegExp('([.!?]\\s+|^)('+TRANSITIONS.join('|')+')\\b','g'));
+  const rule3=countRe(text,/\b[\w'\u2019]+(?:\s[\w'\u2019]+){0,2},\s[\w'\u2019]+(?:\s[\w'\u2019]+){0,2},\s(?:and|or)\s[\w'\u2019]+/gi);
+  const smartQ=countRe(text,/[\u201C\u201D\u2018\u2019]/g);
+  const contractions=countRe(text,/\b[A-Za-z]+['\u2019](?:t|s|re|ve|ll|d|m)\b/gi);
+  const firstP=countRe(text,/\bI\b|\b(?:me|my|mine|we|us|our)\b/g);
+  const specificity=countRe(text,/\b\d+\b/g)+countRe(text,/[a-z,;:]\s+[A-Z][a-z]{2,}/g);
+
+  let cv=0,mean=0,sd=0;
+  if(lens.length){mean=lens.reduce((a,b)=>a+b,0)/lens.length;}
+  if(lens.length>=2){sd=Math.sqrt(lens.reduce((a,b)=>a+(b-mean)**2,0)/lens.length);cv=mean?sd/mean:0;}
+  const enough=lens.length>=4;
+
+  const aiSub={
+    vocab:clamp(per100(vocabCount)/4,0,1),
+    uniformity:enough?clamp((0.62-cv)/0.45,0,1):0,
+    emdash:clamp(per100(emdash)/1.5,0,1),
+    trans:clamp((sents.length?trans/sents.length:0)/0.30,0,1),
+    rule3:clamp(per100(rule3)/1.5,0,1),
+    anti:clamp(anti/2,0,1),
+    smartq:clamp(per100(smartQ)/3,0,1),
+    tilde:clamp(tilde/2,0,1),
+  };
+  const huSub={
+    variation:enough?clamp((cv-0.45)/0.45,0,1):0,
+    contractions:clamp(per100(contractions)/3,0,1),
+    firstperson:clamp(per100(firstP)/4,0,1),
+    specificity:clamp(per100(specificity)/6,0,1),
+  };
+
+  let wsum=0,acc=0;
+  for(const k in AI_SIGNALS){const w=(W[k]!=null?W[k]:AI_SIGNALS[k].w);wsum+=w;acc+=w*aiSub[k];}
+  const aiLean=wsum?acc/wsum:0;
+  let hw=0,hacc=0;
+  for(const k in HUMAN_SIGNALS){hw+=HUMAN_SIGNALS[k].w;hacc+=HUMAN_SIGNALS[k].w*huSub[k];}
+  const humanLean=hw?hacc/hw:0;
+
+  const score=Math.round(clamp(aiLean-0.35*humanLean,0,1)*100);
+
+  const find={
+    vocab:`${vocabCount} phrase${vocabCount!==1?'s':''} \u00b7 ${per100(vocabCount).toFixed(1)}/100w`,
+    uniformity:enough?`variation ${cv.toFixed(2)} (mean ${mean.toFixed(1)}\u00b1${sd.toFixed(1)} words)`:'need \u22654 sentences',
+    emdash:`${emdash} \u00b7 ${per100(emdash).toFixed(1)}/100w`,
+    trans:`${trans} of ${sents.length} sentences`,
+    rule3:`${rule3} list${rule3!==1?'s':''}`,
+    anti:`${anti}`,
+    smartq:`${smartQ}`,
+    tilde:`${tilde}`,
+  };
+  const huFind={
+    variation:enough?`variation ${cv.toFixed(2)}`:'need \u22654 sentences',
+    contractions:`${contractions}`,
+    firstperson:`${firstP} pronouns`,
+    specificity:`${specificity} concrete refs`,
+  };
+
+  // per-sentence local heat
+  const spans=collectMatches(text);
+  sents.forEach(s=>{
+    const flagged=spans.filter(sp=>sp.start>=s.start&&sp.start<s.end).length;
+    let local=clamp(flagged/Math.max(s.words,6)*3,0,1);
+    if(enough&&Math.abs(s.words-mean)<=0.20*mean)local=clamp(local+0.15,0,1);
+    const fw=(s.text.match(/[A-Za-z'\u2019]+/)||[''])[0];
+    if(/^(This|These|It|There|The|Furthermore|Moreover|However|Consequently|Additionally)$/.test(fw))local=clamp(local+0.12,0,1);
+    s.local=local;
+  });
+
+  return {score,aiLean,humanLean,aiSub,huSub,find,huFind,wordCount,sents,mean,sd,cv,enough,spans,
+          counts:{vocabCount,emdash,tilde,anti,trans,rule3,smartQ,contractions,firstP,specificity}};
+}
+
+
+/* ===================== Stylometry + comparison ===================== */
+const FUNCTION_WORDS=["the","of","and","to","a","in","that","it","is","was","i","for","on","you","he","be","with","as","by","at","have","are","this","not","but","had","his","they","from","she","which","or","we","an","were","been","has","their","my","so","if","me","what","all","would","there","when","who","will"];
+
+function stylometry(text){
+  const toks=(text.toLowerCase().match(/[a-z'\u2019]+/g)||[]);
+  const n=toks.length||1;
+  const fw={}; FUNCTION_WORDS.forEach(w=>fw[w]=0);
+  toks.forEach(t=>{const k=t.replace(/\u2019/g,"'");if(fw[k]!=null)fw[k]++;});
+  const fwVec=FUNCTION_WORDS.map(w=>fw[w]/n);
+  const sents=getSentences(text); const lens=sents.map(s=>s.words).filter(x=>x>0);
+  let mean=0,sd=0,cv=0;
+  if(lens.length){mean=lens.reduce((a,b)=>a+b,0)/lens.length;}
+  if(lens.length>=2){sd=Math.sqrt(lens.reduce((a,b)=>a+(b-mean)**2,0)/lens.length);cv=mean?sd/mean:0;}
+  const uniq=new Set(toks).size;
+  const per100=x=>x/n*100;
+  const feat={
+    meanSentence:mean,
+    sdSentence:sd,
+    ttr:uniq/n,
+    avgWordLen:toks.reduce((a,b)=>a+b.length,0)/n,
+    commaRate:per100((text.match(/,/g)||[]).length),
+    semicolonRate:per100((text.match(/;/g)||[]).length),
+    dashRate:per100((text.match(/\u2014|--/g)||[]).length),
+    exclaimRate:per100((text.match(/!/g)||[]).length),
+    questionRate:per100((text.match(/\?/g)||[]).length),
+    contractionRate:per100((text.match(/\b[a-z]+['\u2019](?:t|s|re|ve|ll|d|m)\b/gi)||[]).length),
+  };
+  return {n,fwVec,feat,sentences:sents.length};
+}
+
+function cosine(a,b){
+  let dot=0,na=0,nb=0;
+  for(let i=0;i<a.length;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];}
+  if(na===0||nb===0)return 0;
+  return dot/(Math.sqrt(na)*Math.sqrt(nb));
+}
+
+// scales for normalizing per-feature gaps into 0..1 "distance"
+const FEAT_SCALE={meanSentence:12,sdSentence:8,ttr:0.25,avgWordLen:1.2,commaRate:6,semicolonRate:2,dashRate:2,exclaimRate:3,questionRate:3,contractionRate:4};
+const FEAT_LABEL={meanSentence:"Avg sentence length",sdSentence:"Sentence-length spread",ttr:"Vocabulary richness (TTR)",avgWordLen:"Avg word length",commaRate:"Commas /100w",semicolonRate:"Semicolons /100w",dashRate:"Em-dashes /100w",exclaimRate:"Exclamations /100w",questionRate:"Questions /100w",contractionRate:"Contractions /100w"};
+
+function compareTexts(refText,susText){
+  const a=stylometry(refText), b=stylometry(susText);
+  const fwCos=cosine(a.fwVec,b.fwVec);
+  const rows=[]; let distSum=0,distN=0;
+  for(const k in FEAT_SCALE){
+    const va=a.feat[k], vb=b.feat[k];
+    const d=clamp(Math.abs(va-vb)/FEAT_SCALE[k],0,1);
+    distSum+=d; distN++;
+    rows.push({key:k,label:FEAT_LABEL[k],a:va,b:vb,sim:1-d});
+  }
+  const featSim=1-(distSum/distN);
+  // headline: function-word cosine dominates (classic authorship signal), feature closeness supports
+  const styleSim=clamp(0.6*fwCos+0.4*featSim,0,1);
+  const enough=a.n>=60&&b.n>=60;
+  return {fwCos,featSim,styleSim,rows,enough,refWords:a.n,susWords:b.n,
+          dripRef:analyze(refText).score,dripSus:analyze(susText).score};
+}
+
+/* ===================== Evaluation metrics ===================== */
+// items: [{score:0-100,label:1|0}]  (1 = AI, 0 = human)
+function confusion(items,T){
+  let tp=0,fp=0,fn=0,tn=0;
+  items.forEach(it=>{const pred=it.score>=T?1:0;
+    if(it.label===1&&pred===1)tp++;
+    else if(it.label===0&&pred===1)fp++;
+    else if(it.label===1&&pred===0)fn++;
+    else tn++;});
+  const acc=(tp+tn)/(items.length||1);
+  const prec=tp+fp?tp/(tp+fp):0;
+  const rec=tp+fn?tp/(tp+fn):0;       // TPR
+  const fpr=fp+tn?fp/(fp+tn):0;
+  const f1=prec+rec?2*prec*rec/(prec+rec):0;
+  return {tp,fp,fn,tn,acc,prec,rec,fpr,f1};
+}
+function rocSweep(items){
+  const pts=[];
+  for(let T=0;T<=100;T++){const c=confusion(items,T);pts.push({T,fpr:c.fpr,tpr:c.rec});}
+  // AUC via trapezoid over sorted-by-fpr (sweep already monotone-ish in T desc)
+  const sorted=pts.slice().sort((a,b)=>a.fpr-b.fpr||a.tpr-b.tpr);
+  let auc=0;
+  for(let i=1;i<sorted.length;i++){const x0=sorted[i-1].fpr,x1=sorted[i].fpr,y0=sorted[i-1].tpr,y1=sorted[i].tpr;auc+=(x1-x0)*(y0+y1)/2;}
+  return {pts,auc:clamp(auc,0,1)};
+}
+
+if(typeof module!=='undefined')module.exports={analyze,stylometry,compareTexts,confusion,rocSweep,cosine,getSentences,collectMatches,highlight,SAMPLE_AI,SAMPLE_HUMAN,DEFAULT_W};
+
+const $=id=>document.getElementById(id);
+const EX_REF="I almost missed the turn. Rain had been coming down for hours, and by the time I found the diner its windows were the only warm thing for miles. A waitress named Dot poured my coffee like she had somewhere better to be. I didn't. We talked about nothing much. I stayed anyway, watching trucks hiss past on the wet road. For a while that was enough, and then it wasn't.";
+const EX_SUS="So I went back to that diner again last week. Dot wasn't working but some kid was, barely looked up from his phone. The coffee was worse than I remembered. I sat by the same window and watched the rain do its thing for an hour. Didn't say much to anybody. Left a big tip out of habit and drove home in the dark.";
+
+function bandFor(s){
+  if(s>=0.66)return{cls:'hu',txt:'styles are close',note:'The two texts share a lot of stylistic DNA. That is consistent with the same author — though a shared genre or topic can also pull styles together, so weigh it alongside everything else you know.'};
+  if(s>=0.45)return{cls:'',txt:'mixed signals',note:'Some traits line up, others diverge. This is genuinely inconclusive on its own — a reason to gather more samples or read closely, not to draw a conclusion.',style:'background:rgba(224,146,47,.16);color:#B7791F'};
+  return{cls:'ai',txt:'styles diverge',note:'The two texts behave quite differently. That can mean a different author or AI assistance — but it can also just mean the person wrote in a different register, mood, or format. Treat it as a flag to investigate.'};
+}
+function fmt(k,v){
+  if(k==='ttr')return (v*100).toFixed(0)+'%';
+  return v.toFixed(1);
+}
+function render(c){
+  const pct=Math.round(c.styleSim*100);
+  $('matchNum').textContent=pct+'%';
+  const b=bandFor(c.styleSim);
+  const badge=$('matchBand'); badge.textContent=b.txt; badge.className='pill '+b.cls;
+  if(b.style)badge.setAttribute('style',b.style+';font-size:.85rem;margin-top:6px;display:inline-block');
+  else badge.setAttribute('style','font-size:.85rem;margin-top:6px;display:inline-block');
+  $('matchExplain').textContent=b.note;
+  $('fwCos').textContent=(c.fwCos*100).toFixed(0)+'%';
+  $('dripRef').textContent=c.dripRef;
+  $('dripSus').textContent=c.dripSus;
+
+  const sn=$('shortNote');
+  if(!c.enough){sn.style.display='';sn.textContent='One or both samples are under ~60 words ('+c.refWords+' and '+c.susWords+'). Style signals get unreliable on short text — add more for a trustworthy read.';}
+  else sn.style.display='none';
+
+  const tb=$('featBody'); tb.innerHTML='';
+  c.rows.forEach(r=>{
+    const tr=document.createElement('tr');
+    const w=(r.sim*100).toFixed(0);
+    tr.innerHTML='<td>'+r.label+'</td>'+
+      '<td style="font-family:monospace">'+fmt(r.key,r.a)+'</td>'+
+      '<td style="font-family:monospace">'+fmt(r.key,r.b)+'</td>'+
+      '<td><div style="height:8px;background:var(--paper-2);border-radius:4px;overflow:hidden"><div style="height:100%;width:'+w+'%;background:'+(r.sim>0.66?'#2BA86B':r.sim>0.4?'#E0922F':'#E2553B')+'"></div></div></td>';
+    tb.appendChild(tr);
+  });
+  $('results').style.display='';
+  $('results').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+function run(){
+  const ref=$('ref').value.trim(), sus=$('sus').value.trim();
+  if(!ref||!sus){if(!ref)$('ref').focus();else $('sus').focus();return;}
+  render(compareTexts(ref,sus));
+}
+$('run').addEventListener('click',run);
+$('sample').addEventListener('click',function(){$('ref').value=EX_REF;$('sus').value=EX_SUS;run();});
+$('ref').value=EX_REF;$('sus').value=EX_SUS;
+</script>
+</body></html>
